@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router();
+const posts_data = require('../public/posts_data')
 
 //index
 router.get('/', (req, res) => {
-    res.send(`return all posts`)
+    res.json(posts_data)
 })
 //show
 router.get('/:id', (req, res) => {
