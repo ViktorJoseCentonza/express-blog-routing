@@ -7,29 +7,31 @@ router.get('/', (req, res) => {
     res.json(posts_data)
 })
 //show
-router.get('/:id', (req, res) => {
-    const postId = req.params.id
-    res.send(`return post with id: ${postId}`)
+router.get('/:slug', (req, res) => {
+    const postSlug = req.params.slug
+
+    //need to check if element.slug is equal to postSlug and return that element if true, else return slug not found
+    res.json(posts_data)
 })
 //store
-router.post('/:id', (req, res) => {
-    const postId = req.params.id
-    res.send(`add a new post with id: ${postId}`)
+router.post('/:slug', (req, res) => {
+    const postSlug = req.params.slug
+    res.send(`add a new post with slug: ${postSlug}`)
 })
 //update
-router.put('/:id', (req, res) => {
-    const postId = req.params.id
-    res.send(`update post with id: ${postId}`)
+router.put('/:slug', (req, res) => {
+    const postSlug = req.params.slug
+    res.send(`update post with slug: ${postSlug}`)
 })
 //partial update
-router.patch('/:id', (req, res) => {
-    const postId = req.params.id
-    res.send(`modify post with id: ${postId}`)
+router.patch('/:slug', (req, res) => {
+    const postSlug = req.params.slug
+    res.send(`modify post with slug: ${postSlug}`)
 })
 //delete
-router.delete('/:id', (req, res) => {
-    const postId = req.params.id
-    res.send(`delete post with id: ${postId}`)
+router.delete('/:slug', (req, res) => {
+    const postSlug = req.params.slug
+    res.send(`delete post with slug: ${postSlug}`)
 })
 
 module.exports = router;
