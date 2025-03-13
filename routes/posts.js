@@ -9,9 +9,27 @@ router.get('/', (req, res) => {
 //show
 router.get('/:slug', (req, res) => {
     const postSlug = req.params.slug
-
-    //need to check if element.slug is equal to postSlug and return that element if true, else return slug not found
-    res.json(posts_data)
+    //works but sends 2 responses if slug is found throwing an error
+    // posts_data.forEach((element, index, array) => {
+    //     if (element.slug == postSlug) {
+    //         console.log(`sent element with slug: ${postSlug}`);
+    //         res.json(element)
+    //         return
+    //     } else if (index == array.length - 1) {
+    //         console.log(`could not resolve element with slug: ${postSlug}`);
+    //         res.send(`post with slug: ${postSlug} could not be found`)
+    //     }
+    // })
+    for (let i = 0; i < posts_data.length; i++) {
+        if (posts_data[i].slug == postSlug) {
+            console.log(`sent post with slug: ${postSlug}`);
+            res.json(posts_data[i])
+            break
+        } else if (i == posts_data.length - 1) {
+            console.log(`could not resolve post with slug: ${postSlug}`);
+            res.send(`post with slug: ${postSlug} could not be found`)
+        }
+    }
 })
 //store
 router.post('/:slug', (req, res) => {
